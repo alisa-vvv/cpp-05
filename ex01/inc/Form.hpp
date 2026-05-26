@@ -29,6 +29,10 @@ public:
 
 	GradeException	GradeTooLowException;
 	GradeException	GradeTooHighException;
+	void	beSigned(Bureaucrat	signer);
+	const std::string&	getName() const;
+	int	getSignGrade() const;
+	int	getExecGrade() const;
 
 protected:
 private:

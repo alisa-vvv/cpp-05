@@ -12,17 +12,61 @@
 
 #include "Form.hpp"
 
-Form::Form() {
+/*
+* Form constructors
+*/
+Form::Form(std::string name, int sign_grade, int exec_grade) 
+	:	GradeTooLowException	(LOWEST_GRADE),
+		GradeTooHighException	(HIGHEST_GRADE),
+		_name					(name),
+		_sign_grade				(sign_grade),
+		_exec_grade				(exec_grade)
+{
+	if (sign_grade < HIGHEST_GRADE || exec_grade < HIGHEST_GRADE)
+		throw(GradeTooHighException);
+	if (sign_grade > LOWEST_GRADE || exec_grade > LOWEST_GRADE)
+		throw(GradeTooLowException);
 }
 
-Form(const Form& other);
-Form&	operator=(const Form& other);
-~Form();
+Form::Form(const Form& other)
+	:	GradeTooLowException	(other.GradeTooLowException),
+		GradeTooHighException	(other.GradeTooHighException),
+		_name					(other._name),
+		_sign_grade				(other._sign_grade),
+		_exec_grade				(other._exec_grade)
+{}
 
-const char*	GradeException::what() const noexcept {
-	if (_grade_limit == LOWEST_GRADE)
-		return ("Grade too low! Can't increment further.");
-	if (_grade_limit == HIGHEST_GRADE)
-		return ("Grade too high! Can't increment further.");
-	return ("Unclear grade exception!\n");
+Form::~Form() {}
+/*
+*/
+
+/*
+* Form overloads
+*/
+Form&	Form::operator=(const Form& other) {
+	if (this != &other)
+		*this = other;
+	return (*this);
 }
+/*
+*/
+
+/*
+* Form methods
+*/
+const std::string&	Form::getName() const {
+	return (_name);
+}
+int	Form::getSignGrade() const {
+	return (_sign_grade);
+}
+int	Form::getExecGrade() const {
+	return (_exec_grade);
+}
+void	Form::beSigned(Bureaucrat signer) {
+	if (signer.getGrade() > this->getSignGrade()) {
+		throw(GradeTooLowException);
+	}
+}
+/*
+*/

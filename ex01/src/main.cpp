@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void) {
 	Bureaucrat	bureaucrat_bad("John", LOWEST_GRADE - 10);
@@ -42,4 +43,5 @@ int	main(void) {
 			break ;
 		}
 	}
-}
+	Form	newForm("name", LOWEST_GRADE, LOWEST_GRADE);
+ }
