@@ -15,7 +15,8 @@
 NAME	=	maggots
 
 CXXFILES	=	main.cpp\
-				Bureaucrat.cpp
+				Bureaucrat.cpp\
+				Form.cpp
 
 
 OFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.o))

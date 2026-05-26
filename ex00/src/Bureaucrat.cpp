@@ -102,9 +102,9 @@ GradeException::~GradeException() {}
 
 const char*	GradeException::what() const noexcept {
 	if (_grade_limit == LOWEST_GRADE)
-		return ("Grade too low! Can't increment further.");
+		return ("Grade too low!");
 	if (_grade_limit == HIGHEST_GRADE)
-		return ("Grade too high! Can't increment further.");
+		return ("Grade too high!");
 	return ("Unclear grade exception!\n");
 }
 /*

@@ -32,8 +32,9 @@
 #endif
 
 class	GradeException : public std::exception {
+	class Bureaucrat;
 public:
-	GradeException(int grade_limit);
+	GradeException(int grade_limit, Bureaucrat& the_excepted);
 	GradeException(const GradeException& other);
 	GradeException&	operator=(const GradeException& other);
 	~GradeException();
@@ -41,7 +42,8 @@ public:
 	const char*	what() const noexcept override;
 protected:
 private:
-	int	_grade_limit;
+	const int	_grade_limit;
+	Bureaucrat&	_the_excepted;
 };
 
 class	Bureaucrat {
