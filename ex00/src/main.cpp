@@ -1,45 +1,50 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-int	main(void) {
-	Bureaucrat	bureaucrat_bad("John", LOWEST_GRADE - 10);
-	Bureaucrat	bureaucrat_good("Jane", HIGHEST_GRADE + 10);
+int	main() {
+	Bureaucrat	jared("Jared", 149);
+	Bureaucrat	alina("Alina", 2);
 
-	while (1) {
-		try {
-			std::cout << CLR_YEL << "Before decrement: " << CLR_NON;
-			std::cout << bureaucrat_bad << '\n';
-			bureaucrat_bad.decrementGrade();
-			std::cout << CLR_YEL << "After decrement: " << CLR_NON;
-			std::cout << bureaucrat_bad << '\n';
-		}
-		catch (GradeException &caught_exception) {
-			std::cout << CLR_RED;
-			std::cout << "Caught excpetion: ";
-			std::cout << CLR_YEL << caught_exception.what() << CLR_NON;
-			std::cout << " on decrementing " << CLR_YEL;
-			std::cout << bureaucrat_bad.getName() << CLR_NON << "'s grade";
-			std::cout << '\n';
-			break ;
-		}
-	}
+	std::cout << CLR_YEL << "Initial state:" << CLR_NON << '\n';
+	std::cout << jared;
+	std::cout << alina;
 	std::cout << '\n';
-	while (1) {
-		try {
-			std::cout << CLR_YEL << "Before increment: " << CLR_NON;
-			std::cout << bureaucrat_good << '\n';
-			bureaucrat_good.incrementGrade();
-			std::cout << CLR_YEL << "After increment: " << CLR_NON;
-			std::cout << bureaucrat_good << '\n';
-		}
-		catch (GradeException &caught_exception) {
-			std::cout << CLR_RED;
-			std::cout << "Caught excpetion: ";
-			std::cout << CLR_YEL << caught_exception.what() << CLR_NON;
-			std::cout << " on incrementing " << CLR_YEL;
-			std::cout << bureaucrat_good.getName() << CLR_NON << "'s grade";
-			std::cout << '\n';
-			break ;
-		}
+
+	std::cout << CLR_YEL << "Incrementing alina:" << CLR_NON << '\n';
+	alina.incrementGrade();
+	std::cout << alina;
+	try  {
+		alina.incrementGrade();
+	}
+	catch (BureaucratException) {
+		std::cout << "waow, exception\n";
+	}
+	std::cout << alina;
+	std::cout << '\n';
+
+	std::cout << CLR_YEL << "Decrementing jared:" << CLR_NON << '\n';
+	jared.decrementGrade();
+	std::cout << jared;
+	try  {
+		jared.decrementGrade();
+	}
+	catch (BureaucratException) {
+		std::cout << "waow, exception\n";
+	}
+	std::cout << jared;
+	std::cout << '\n';
+
+	std::cout << CLR_YEL << "Bad initialiaztion:" << CLR_NON << '\n';
+	try {
+		Bureaucrat	cheater_pumpkin_eater("Cheater - pumpkin eater", 0);
+	}
+	catch (BureaucratException) {
+		std::cout << "waow, exception\n";
+	}
+	try {
+		Bureaucrat	liar_pants_on_fire("Liar - pants on fire", 151);
+	}
+	catch (BureaucratException) {
+		std::cout << "waow, exception\n";
 	}
 }

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP_
-# define BUREAUCRAT_HPP_
+#include <string>
+#pragma once
 
 # ifndef CLR_NON
 #  define	CLR_NON "\033[0m"
@@ -22,48 +22,41 @@
 #  define	CLR_MAG "\033[95m"
 # endif // CLR_NON and other CLR defines
 
-#include <string>
-
-#define	HIGHEST_GRADE 1
-#define	LOWEST_GRADE 150
-
-class	GradeException : public std::exception {
+class	BureaucratException : std::exception {
 public:
-	GradeException(int grade_limit);
-	GradeException(const GradeException& other);
-	GradeException&	operator=(const GradeException& other);
-	~GradeException();
-
-	const char*	what() const noexcept override;
-protected:
+	BureaucratException(const std::string& msg);
+	const char*	what() const noexcept;
 private:
-	int	_grade_limit;
+	std::string	_msg;
 };
 
 class	Bureaucrat {
 public:
-	Bureaucrat(std::string name, int grade);
+/*	Canonical form stuff	*/
+	Bureaucrat(const std::string& name, unsigned int grade);
 	Bureaucrat(const Bureaucrat& other);
 	Bureaucrat&	operator=(const Bureaucrat& other);
 	~Bureaucrat();
-
+/**/
+/*	Setters and getters	*/
 	const std::string&	getName() const;
-	int	getGrade() const;
+	const unsigned int&	getGrade() const;
+/**/
+/*	Changing grade	*/
 	void	incrementGrade();
 	void	decrementGrade();
+/**/
+	const BureaucratException	GradeTooHighException;
+	const BureaucratException	GradeTooLowException;
 
-	GradeException	GradeTooLowException;
-	GradeException	GradeTooHighException;
-protected:
 private:
-	const std::string	_name = "default_name";
-	int					_grade = 150;
-
+	const std::string	_name;
+	unsigned int		_grade;
+	static const int	_highest_grade = 1;
+	static const int	_lowest_grade = 150;
 };
 
-std::ostream& operator<<(
-	std::ostream& stream,
+std::ostream&	operator<<(
+	std::ostream& os,
 	const Bureaucrat& bureaucrat
 );
-
-#endif //BUREAUCRAT_HPP_
