@@ -16,8 +16,8 @@ int	main() {
 	try  {
 		alina.incrementGrade();
 	}
-	catch (BureaucratException) {
-		std::cout << "waow, exception\n";
+	catch (GradeException& e) {
+		std::cout << e.what();
 	}
 	std::cout << alina;
 	std::cout << '\n';
@@ -28,8 +28,8 @@ int	main() {
 	try  {
 		jared.decrementGrade();
 	}
-	catch (BureaucratException) {
-		std::cout << "waow, exception\n";
+	catch (GradeException& e) {
+		std::cout << e.what();
 	}
 	std::cout << jared;
 	std::cout << '\n';
@@ -38,13 +38,13 @@ int	main() {
 	try {
 		Bureaucrat	cheater_pumpkin_eater("Cheater - pumpkin eater", 0);
 	}
-	catch (BureaucratException) {
-		std::cout << "waow, exception\n";
+	catch (GradeException& e) {
+		std::cout << e.what();
 	}
 	try {
 		Bureaucrat	liar_pants_on_fire("Liar - pants on fire", 151);
 	}
-	catch (BureaucratException) {
-		std::cout << "waow, exception\n";
+	catch (GradeException& e) {
+		std::cout << e.what();
 	}
 }

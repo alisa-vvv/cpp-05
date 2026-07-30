@@ -5,39 +5,33 @@
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2026/05/26 15:37:44 by avaliull            #+#    #+#           */
-/*   Updated: 2026/05/26 15:42:18 by avaliull            ########   odam.nl   */
+/*   Created: 2026/07/30 17:08:45 by avaliull            #+#    #+#           */
+/*   Updated: 2026/07/30 17:10:18 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <Bureaucrat.hpp>
 #include <string>
-#include "Bureaucrat.hpp"
 
-#ifndef HIGHEST_GRADE
-# define	HIGHEST_GRADE 1
-#endif
-#ifndef LOWEST_GRADE
-# define	LOWEST_GRADE 150
-#endif
-
-class	Form {
+class Form {
 public:
-	Form(std::string name, int sign_grade, int exec_grade);
+	Form(
+		const std::string& name,
+		unsigned int sign_grade,
+		unsigned int execute_grade
+	);
 	Form(const Form& other);
-	Form&	operator=(const Form& other);
+	Form& operator=(const Form& other);
 	~Form();
-
-	GradeException	GradeTooLowException;
-	GradeException	GradeTooHighException;
-	void	beSigned(Bureaucrat	signer);
-	const std::string&	getName() const;
-	int	getSignGrade() const;
-	int	getExecGrade() const;
-
-protected:
 private:
-	const std::string	_name = "unnamed_form";
-	bool				_is_signed = "false";
-	const int			_sign_grade = LOWEST_GRADE;
-	const int			_exec_grade = LOWEST_GRADE;
+	const std::string	_name;
+	bool				_is_signed = false;
+	unsigned int		_sign_grade;
+	unsigned int		_execute_grade;
+
+	static const int	_highest_grade = 1;
+	static const int	_lowest_grade = 150;
+
+	static const GradeException	GradeTooHighException;
+	static const GradeException	GradeTooLowException;
 };

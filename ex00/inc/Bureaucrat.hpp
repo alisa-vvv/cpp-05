@@ -22,9 +22,9 @@
 #  define	CLR_MAG "\033[95m"
 # endif // CLR_NON and other CLR defines
 
-class	BureaucratException : std::exception {
+class	GradeException : std::exception {
 public:
-	BureaucratException(const std::string& msg);
+	GradeException(const std::string& msg);
 	const char*	what() const noexcept;
 private:
 	std::string	_msg;
@@ -46,8 +46,8 @@ public:
 	void	incrementGrade();
 	void	decrementGrade();
 /**/
-	const BureaucratException	GradeTooHighException;
-	const BureaucratException	GradeTooLowException;
+	static const GradeException	GradeTooHighException;
+	static const GradeException	GradeTooLowException;
 
 private:
 	const std::string	_name;

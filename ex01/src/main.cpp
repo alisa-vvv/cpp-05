@@ -2,8 +2,15 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-int	main(void) {
-	Form	newForm("name", HIGHEST_GRADE, HIGHEST_GRADE);
-	Bureaucrat	unskilled_bureaucrat("bad", LOWEST_GRADE + 10);
-	newForm.beSigned(unskilled_bureaucrat);
+int	main() {
+	Bureaucrat	jared("Jared", 149);
+	Bureaucrat	alina("Alina", 2);
+	Form		form("lol", 123, 123);
+
+	try {
+		Form	form2("lol", 0, 123);
+	}
+	catch (const GradeException& e) {
+		std::cout << e.what();
+	}
 }

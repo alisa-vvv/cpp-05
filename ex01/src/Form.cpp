@@ -5,71 +5,56 @@
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2026/05/26 15:37:35 by avaliull            #+#    #+#           */
-/*   Updated: 2026/05/26 15:37:36 by avaliull            ########   odam.nl   */
+/*   Created: 2026/07/30 17:10:32 by avaliull            #+#    #+#           */
+/*   Updated: 2026/07/30 17:11:05 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-/*
-* Form constructors
-*/
-Form::Form(std::string name, int sign_grade, int exec_grade) 
-	:	GradeTooLowException	(LOWEST_GRADE),
-		GradeTooHighException	(HIGHEST_GRADE),
-		_name					(name),
-		_is_signed				(false),
-		_sign_grade				(sign_grade),
-		_exec_grade				(exec_grade)
+/*	Exceptions	*/
+const GradeException	Form::GradeTooHighException = [] {
+	const GradeException	GradeTooHighException("Grade too high\n");
+	return (GradeTooHighException);
+}();
+const GradeException	Form::GradeTooLowException = [] {
+	const GradeException	GradeTooLowException("Grade too low\n");
+	return (GradeTooLowException);
+}();
+/**/
+
+/*	Canonical form stuff	*/
+Form::Form(
+	const std::string& name,
+	unsigned int sign_grade,
+	unsigned int execute_grade
+)
+	:	_name(name)
 {
-	if (sign_grade < HIGHEST_GRADE || exec_grade < HIGHEST_GRADE)
+	if (sign_grade < _highest_grade) {
 		throw(GradeTooHighException);
-	if (sign_grade > LOWEST_GRADE || exec_grade > LOWEST_GRADE)
+	}
+	else if (sign_grade > _lowest_grade) {
 		throw(GradeTooLowException);
+	}
+	_sign_grade = sign_grade;
+	if (execute_grade < _highest_grade) {
+		throw(GradeTooHighException);
+	}
+	else if (execute_grade > _lowest_grade) {
+		throw(GradeTooLowException);
+	}
+	_execute_grade = execute_grade;
 }
 
-Form::Form(const Form& other)
-	:	GradeTooLowException	(other.GradeTooLowException),
-		GradeTooHighException	(other.GradeTooHighException),
-		_name					(other._name),
-		_is_signed				(other._is_signed),
-		_sign_grade				(other._sign_grade),
-		_exec_grade				(other._exec_grade)
-{}
+Form::Form(const Form& other) {
+	*this = other;
+}
 
-Form::~Form() {}
-/*
-*/
-
-/*
-* Form overloads
-*/
 Form&	Form::operator=(const Form& other) {
 	if (this != &other)
 		*this = other;
 	return (*this);
 }
-/*
-*/
 
-/*
-* Form methods
-*/
-const std::string&	Form::getName() const {
-	return (_name);
-}
-int	Form::getSignGrade() const {
-	return (_sign_grade);
-}
-int	Form::getExecGrade() const {
-	return (_exec_grade);
-}
-void	Form::beSigned(Bureaucrat signer) {
-	if (signer.getGrade() > this->getSignGrade()) {
-		throw(GradeTooLowException);
-	}
-	_is_signed = true;
-}
-/*
-*/
+Form::~Form() {}
