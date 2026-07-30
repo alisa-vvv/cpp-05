@@ -46,8 +46,8 @@ public:
 	void	incrementGrade();
 	void	decrementGrade();
 /**/
-	const GradeException	GradeTooHighException;
-	const GradeException	GradeTooLowException;
+	static const GradeException	GradeTooHighException;
+	static const GradeException	GradeTooLowException;
 
 private:
 	const std::string	_name;

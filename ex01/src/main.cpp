@@ -8,7 +8,7 @@ int	main() {
 	Form		form("lol", 123, 123);
 
 	try {
-		Form	form2("lol", 0, 123);
+		Form	form2("lol", 11, 14);
 	}
 	catch (const GradeException& e) {
 		std::cout << e.what();

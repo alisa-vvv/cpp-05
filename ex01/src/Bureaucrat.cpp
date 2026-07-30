@@ -12,11 +12,20 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+/*	Exceptions	*/
+const GradeException	Bureaucrat::GradeTooHighException = [] {
+	const GradeException	GradeTooHighException("Grade too high\n");
+	return (GradeTooHighException);
+}();
+const GradeException	Bureaucrat::GradeTooLowException = [] {
+	const GradeException	GradeTooLowException("Grade too low\n");
+	return (GradeTooLowException);
+}();
+/**/
+
 /*	Canonical form stuff	*/
 Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
-	:	GradeTooHighException("Grade too high"),
-		GradeTooLowException("Grade too low"),
-		_name(name)
+	:	_name(name)
 {
 	if (grade < _highest_grade) {
 		throw(GradeTooHighException);
@@ -28,8 +37,6 @@ Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) 
-	:	GradeTooHighException("Grade too high"),
-		GradeTooLowException("Grade too low")
 {
 	*this = other;
 }

@@ -58,3 +58,14 @@ Form&	Form::operator=(const Form& other) {
 }
 
 Form::~Form() {}
+/**/
+
+/*	Setters and getters	*/
+const std::string&	Form::getName() const {
+	rVkjdksafjdksfjdskfjd
+
+}
+//	const unsigned int&	getSignGrade() const;
+//	const unsigned int&	getExecuteGrade() const;
+//	const bool&			isSigned() const;
+/**/

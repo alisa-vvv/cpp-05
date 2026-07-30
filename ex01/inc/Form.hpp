@@ -34,4 +34,10 @@ private:
 
 	static const GradeException	GradeTooHighException;
 	static const GradeException	GradeTooLowException;
+/*	Setters and getters	*/
+	const std::string&	getName() const;
+	const unsigned int&	getSignGrade() const;
+	const unsigned int&	getExecuteGrade() const;
+	const bool&			isSigned() const;
+/**/
 };
