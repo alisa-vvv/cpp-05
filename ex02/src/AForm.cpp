@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:10:32 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 18:59:09 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:07:48 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ AForm::AForm(
 AForm::AForm(const AForm& other)
 	:	_name(other.getName()),
 		_sign_grade(other.getSignGrade()),
-		_execute_grade(other.getExecuteGrade())
+		_execute_grade(other.getExecuteGrade()),
+		_is_signed(other.isSigned())
 {
 }
 

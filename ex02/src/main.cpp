@@ -7,5 +7,7 @@ int	main() {
 	Bureaucrat	jared("Jared", 149);
 	Bureaucrat	alina("Alina", 2);
 
-	ShrubberyCreationForm("home");
+	ShrubberyCreationForm	home("home");
+	std::cout << home;
+	alina.signForm(home);
 }

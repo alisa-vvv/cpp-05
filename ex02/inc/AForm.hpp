@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:08:45 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 19:05:12 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:17:21 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,13 @@ public:
 	const unsigned int&	getExecuteGrade() const;
 	const bool&			isSigned() const;
 /**/
-	void	beSigned(const Bureaucrat& bureaucrat);
+	void			beSigned(const Bureaucrat& bureaucrat);
+	virtual void	execute(const Bureaucrat& bureaucrat) const = 0;
+
+protected:
+	static const FormException	GradeTooHighException;
+	static const FormException	GradeTooLowException;
+
 private:
 	const std::string	_name;
 	const unsigned int	_sign_grade;
@@ -50,9 +56,6 @@ private:
 
 	static const int	_highest_grade = 1;
 	static const int	_lowest_grade = 150;
-
-	static const FormException	GradeTooHighException;
-	static const FormException	GradeTooLowException;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& form);

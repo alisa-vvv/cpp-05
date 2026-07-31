@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/31 18:40:57 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 18:53:29 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:13:11 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& other) = delete;
 	~ShrubberyCreationForm();
+	void	execute(const Bureaucrat& bureaucrat) const;
 private:
 	const std::string	_target;
 };
