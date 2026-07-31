@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/03/27 19:19:12 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 18:24:00 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:51:37 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ public:
 	static const BureaucratException	GradeTooLowException;
 
 	void	signForm(AForm& form) const;
+	void	executeForm(AForm const & form) const;
 
 private:
 	const std::string	_name;

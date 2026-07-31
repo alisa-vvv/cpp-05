@@ -9,5 +9,8 @@ int	main() {
 
 	ShrubberyCreationForm	home("home");
 	std::cout << home;
+	alina.executeForm(home);
 	alina.signForm(home);
+	jared.executeForm(home);
+	alina.executeForm(home);
 }

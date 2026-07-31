@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:08:45 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 19:17:21 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:46:47 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ public:
 protected:
 	static const FormException	GradeTooHighException;
 	static const FormException	GradeTooLowException;
+	static const FormException	FormNotSignedException;
+	void			confirmCanExecute(const Bureaucrat& bureaucrat) const;
 
 private:
 	const std::string	_name;

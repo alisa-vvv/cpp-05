@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:10:32 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 19:07:48 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:46:55 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ const FormException	AForm::GradeTooHighException = [] {
 }();
 const FormException	AForm::GradeTooLowException = [] {
 	const FormException	GradeTooLowException("Grade too low\n");
+	return (GradeTooLowException);
+}();
+const FormException	AForm::FormNotSignedException = [] {
+	const FormException	GradeTooLowException("Form not signed\n");
 	return (GradeTooLowException);
 }();
 /**/
@@ -98,4 +102,13 @@ std::ostream&	operator<<(std::ostream& os, const AForm& form) {
 	os << "\tExecute grade: " << form.getExecuteGrade() << '\n';
 	os << '\t' << ((form.isSigned()) ? "Signed" : "Not signed") << '\n';
 	return (os);
+}
+
+void	AForm::confirmCanExecute(const Bureaucrat& bureaucrat) const {
+	if (!this->isSigned()) {
+		throw (FormNotSignedException);
+	}
+	if (bureaucrat.getGrade() > this->getExecuteGrade()) {
+		throw (GradeTooLowException);
+	}
 }
