@@ -10,34 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Bureaucrat.hpp>
 #include <string>
+
+class	FormException : std::exception {
+public:
+	FormException(const std::string& msg);
+	const char*	what() const noexcept;
+private:
+	std::string	_msg;
+};
 
 class Form {
 public:
+	Form() = delete;
 	Form(
 		const std::string& name,
 		unsigned int sign_grade,
 		unsigned int execute_grade
 	);
 	Form(const Form& other);
-	Form& operator=(const Form& other);
+	Form& operator=(const Form& other) = delete;
 	~Form();
-private:
-	const std::string	_name;
-	bool				_is_signed = false;
-	unsigned int		_sign_grade;
-	unsigned int		_execute_grade;
-
-	static const int	_highest_grade = 1;
-	static const int	_lowest_grade = 150;
-
-	static const GradeException	GradeTooHighException;
-	static const GradeException	GradeTooLowException;
 /*	Setters and getters	*/
 	const std::string&	getName() const;
 	const unsigned int&	getSignGrade() const;
 	const unsigned int&	getExecuteGrade() const;
 	const bool&			isSigned() const;
 /**/
+private:
+	const std::string	_name;
+	const unsigned int	_sign_grade;
+	const unsigned int	_execute_grade;
+	bool				_is_signed = false;
+
+	static const int	_highest_grade = 1;
+	static const int	_lowest_grade = 150;
+
+	static const FormException	GradeTooHighException;
+	static const FormException	GradeTooLowException;
 };
+
+std::ostream&	operator<<(std::ostream& os, const Form& form);

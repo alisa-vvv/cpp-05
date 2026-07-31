@@ -10,7 +10,11 @@ int	main() {
 	try {
 		Form	form2("lol", 11, 14);
 	}
-	catch (const GradeException& e) {
+	catch (const FormException& e) {
 		std::cout << e.what();
 	}
+	Form	valid_form("naam", 12, 13);
+	std::cout << valid_form;
+	Form	copied_form(valid_form);
+	std::cout << valid_form;
 }

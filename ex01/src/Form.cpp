@@ -11,14 +11,22 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include <iostream>
 
 /*	Exceptions	*/
-const GradeException	Form::GradeTooHighException = [] {
-	const GradeException	GradeTooHighException("Grade too high\n");
+FormException::FormException(const std::string& msg)
+	:	_msg(msg)
+{}
+
+const char*	FormException::what() const noexcept {
+	return (_msg.c_str());
+}
+const FormException	Form::GradeTooHighException = [] {
+	const FormException	GradeTooHighException("Grade too high\n");
 	return (GradeTooHighException);
 }();
-const GradeException	Form::GradeTooLowException = [] {
-	const GradeException	GradeTooLowException("Grade too low\n");
+const FormException	Form::GradeTooLowException = [] {
+	const FormException	GradeTooLowException("Grade too low\n");
 	return (GradeTooLowException);
 }();
 /**/
@@ -26,10 +34,12 @@ const GradeException	Form::GradeTooLowException = [] {
 /*	Canonical form stuff	*/
 Form::Form(
 	const std::string& name,
-	unsigned int sign_grade,
-	unsigned int execute_grade
+	const unsigned int sign_grade,
+	const unsigned int execute_grade
 )
-	:	_name(name)
+	:	_name(name),
+		_sign_grade(sign_grade),
+		_execute_grade(execute_grade)
 {
 	if (sign_grade < _highest_grade) {
 		throw(GradeTooHighException);
@@ -37,24 +47,19 @@ Form::Form(
 	else if (sign_grade > _lowest_grade) {
 		throw(GradeTooLowException);
 	}
-	_sign_grade = sign_grade;
 	if (execute_grade < _highest_grade) {
 		throw(GradeTooHighException);
 	}
 	else if (execute_grade > _lowest_grade) {
 		throw(GradeTooLowException);
 	}
-	_execute_grade = execute_grade;
 }
 
-Form::Form(const Form& other) {
-	*this = other;
-}
-
-Form&	Form::operator=(const Form& other) {
-	if (this != &other)
-		*this = other;
-	return (*this);
+Form::Form(const Form& other)
+	:	_name(other.getName()),
+		_sign_grade(other.getSignGrade()),
+		_execute_grade(other.getExecuteGrade())
+{
 }
 
 Form::~Form() {}
@@ -62,10 +67,27 @@ Form::~Form() {}
 
 /*	Setters and getters	*/
 const std::string&	Form::getName() const {
-	rVkjdksafjdksfjdskfjd
-
+	return (_name);
 }
-//	const unsigned int&	getSignGrade() const;
-//	const unsigned int&	getExecuteGrade() const;
-//	const bool&			isSigned() const;
+
+const unsigned int&	Form::getSignGrade() const {
+	return (_sign_grade);
+}
+
+const unsigned int&	Form::getExecuteGrade() const {
+	return (_execute_grade);
+}
+
+const bool&	Form::isSigned() const {
+	return (_is_signed);
+}
 /**/
+
+std::ostream&	operator<<(std::ostream& os, const Form& form) {
+	(void) form;
+	os << "Form: " << form.getName() << "\n";
+	os << "\tSign grade: " << form.getSignGrade() << '\n';
+	os << "\tExecute grade: " << form.getExecuteGrade() << '\n';
+	os << '\t' << ((form.isSigned()) ? "Signed" : "Not signed") << '\n';
+	return (os);
+}

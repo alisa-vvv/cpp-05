@@ -13,12 +13,12 @@
 #include <iostream>
 
 /*	Exceptions	*/
-const GradeException	Bureaucrat::GradeTooHighException = [] {
-	const GradeException	GradeTooHighException("Grade too high\n");
+const BureaucratException	Bureaucrat::GradeTooHighException = [] {
+	const BureaucratException	GradeTooHighException("Grade too high\n");
 	return (GradeTooHighException);
 }();
-const GradeException	Bureaucrat::GradeTooLowException = [] {
-	const GradeException	GradeTooLowException("Grade too low\n");
+const BureaucratException	Bureaucrat::GradeTooLowException = [] {
+	const BureaucratException	GradeTooLowException("Grade too low\n");
 	return (GradeTooLowException);
 }();
 /**/
@@ -77,11 +77,11 @@ void	Bureaucrat::decrementGrade() {
 /**/
 
 /*	Exceptions	*/
-GradeException::GradeException(const std::string& msg)
+BureaucratException::BureaucratException(const std::string& msg)
 	:	_msg(msg)
 {}
 
-const char*	GradeException::what() const noexcept {
+const char*	BureaucratException::what() const noexcept {
 	return (_msg.c_str());
 }
 /**/
