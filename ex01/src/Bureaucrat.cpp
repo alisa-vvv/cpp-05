@@ -9,6 +9,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
 
@@ -95,3 +96,13 @@ std::ostream&	operator<<(
 	return (os);
 }
 /**/
+
+void	Bureaucrat::signForm(Form& form) const {
+	try {
+		form.beSigned(*this);
+	}
+	catch (const FormException& e) {
+		std::cout << this->getName() << " couldn't sign " << form.getName();
+		std::cout << " because " << e.what();
+	}
+}

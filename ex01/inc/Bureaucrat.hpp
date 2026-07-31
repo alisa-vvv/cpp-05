@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #pragma once
+#include <string>
 
 # ifndef CLR_NON
 #  define	CLR_NON "\033[0m"
@@ -22,7 +22,9 @@
 #  define	CLR_MAG "\033[95m"
 # endif // CLR_NON and other CLR defines
 
-class	BureaucratException : std::exception {
+class Form;
+
+class	BureaucratException {
 public:
 	BureaucratException(const std::string& msg);
 	const char*	what() const noexcept;
@@ -48,6 +50,8 @@ public:
 /**/
 	static const BureaucratException	GradeTooHighException;
 	static const BureaucratException	GradeTooLowException;
+
+	void	signForm(Form& form) const;
 
 private:
 	const std::string	_name;

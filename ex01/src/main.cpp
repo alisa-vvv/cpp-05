@@ -17,4 +17,9 @@ int	main() {
 	std::cout << valid_form;
 	Form	copied_form(valid_form);
 	std::cout << valid_form;
+
+	jared.signForm(valid_form);
+	std::cout << valid_form;
+	alina.signForm(valid_form);
+	std::cout << valid_form;
 }

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+#include "Bureaucrat.hpp"
 #include <string>
 
 class	FormException : std::exception {
@@ -22,6 +24,7 @@ private:
 
 class Form {
 public:
+/*	Canonical form stuff	*/
 	Form() = delete;
 	Form(
 		const std::string& name,
@@ -31,12 +34,14 @@ public:
 	Form(const Form& other);
 	Form& operator=(const Form& other) = delete;
 	~Form();
+/**/
 /*	Setters and getters	*/
 	const std::string&	getName() const;
 	const unsigned int&	getSignGrade() const;
 	const unsigned int&	getExecuteGrade() const;
 	const bool&			isSigned() const;
 /**/
+	void	beSigned(const Bureaucrat& bureaucrat);
 private:
 	const std::string	_name;
 	const unsigned int	_sign_grade;
