@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                            ::::::::        */
-/*   AAForm.hpp                                                :+:    :+:       */
+/*   AForm.hpp                                               :+:    :+:       */
 /*                                                          +:+               */
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:08:45 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 18:17:05 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 19:05:12 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ public:
 	);
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other) = delete;
-	virtual ~AForm() = 0;
+	virtual ~AForm();
 /**/
 /*	Setters and getters	*/
-	virtual const std::string&	getName() const = 0;
-	virtual const unsigned int&	getSignGrade() const = 0;
-	virtual const unsigned int&	getExecuteGrade() const = 0;
-	virtual const bool&			isSigned() const = 0;
+	const std::string&	getName() const;
+	const unsigned int&	getSignGrade() const;
+	const unsigned int&	getExecuteGrade() const;
+	const bool&			isSigned() const;
 /**/
-	virtual void	beSigned(const Bureaucrat& bureaucrat) = 0;
+	void	beSigned(const Bureaucrat& bureaucrat);
 private:
 	const std::string	_name;
 	const unsigned int	_sign_grade;
