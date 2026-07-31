@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/03/27 19:19:12 by avaliull            #+#    #+#           */
-/*   Updated: 2026/05/05 18:32:40 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 18:24:00 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ private:
 class	Bureaucrat {
 public:
 /*	Canonical form stuff	*/
+	Bureaucrat() = delete;
 	Bureaucrat(const std::string& name, unsigned int grade);
 	Bureaucrat(const Bureaucrat& other);
 	Bureaucrat&	operator=(const Bureaucrat& other);

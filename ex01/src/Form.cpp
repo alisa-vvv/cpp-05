@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:10:32 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/30 17:11:05 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 18:25:35 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	Form::beSigned(const Bureaucrat& bureaucrat) {
 
 std::ostream&	operator<<(std::ostream& os, const Form& form) {
 	(void) form;
-	os << "Form: " << form.getName() << "\n";
+	os << "Form:\t" << form.getName() << "\n";
 	os << "\tSign grade: " << form.getSignGrade() << '\n';
 	os << "\tExecute grade: " << form.getExecuteGrade() << '\n';
 	os << '\t' << ((form.isSigned()) ? "Signed" : "Not signed") << '\n';

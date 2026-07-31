@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/31 17:35:07 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 17:35:20 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/07/31 18:20:36 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ std::ostream&	operator<<(
 /**/
 
 void	Bureaucrat::signForm(Form& form) const {
+	if (form.isSigned()) {
+		std::cout << this->getName() << " couldn't sign " << form.getName();
+		std::cout << " because it's already signed\n";
+		return ;
+	}
 	try {
 		form.beSigned(*this);
 	}
