@@ -6,7 +6,7 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/30 17:10:32 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 19:46:55 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/08/01 16:24:46 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ const bool&	AForm::isSigned() const {
 /**/
 
 void	AForm::beSigned(const Bureaucrat& bureaucrat) {
+	if (this->_is_signed) {
+		throw AForm::FormNotSignedException;
+	}
 	if (bureaucrat.getGrade() > this->getSignGrade()) {
 		throw AForm::GradeTooLowException;
 	}

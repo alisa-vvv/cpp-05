@@ -17,7 +17,9 @@ NAME	=	abstract_form
 CXXFILES	=	main.cpp\
 				Bureaucrat.cpp\
 				AForm.cpp\
-				ShrubberyCreationForm.cpp
+				ShrubberyCreationForm.cpp\
+				RobotomyRequestForm.cpp\
+				PresidentialPardonForm.cpp
 
 
 OFILES	= $(addprefix $(BUILDDIR),$(CXXFILES:.cpp=.o))

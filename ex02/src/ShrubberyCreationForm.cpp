@@ -6,12 +6,11 @@
 /*   By: avaliull <avaliull@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
 /*   Created: 2026/07/31 18:52:11 by avaliull            #+#    #+#           */
-/*   Updated: 2026/07/31 20:14:17 by avaliull            ########   odam.nl   */
+/*   Updated: 2026/08/01 16:21:28 by avaliull            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include <iostream>
 #include <fstream>
 
 /*	Canonical form stuff	*/
@@ -32,7 +31,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 void	ShrubberyCreationForm::execute(const Bureaucrat& bureaucrat) const {
 	this->confirmCanExecute(bureaucrat);
 	std::ofstream	plantation(this->getName());
-	unsigned int	tree_count = this->getExecuteGrade() - bureaucrat.getGrade();
+	int	tree_count = (this->getExecuteGrade() - bureaucrat.getGrade()) % 10;
 	do {
 		plantation << "          &&& &&  & &&\n\
       && &\\/&\\|& ()|/ @, &&\n\
@@ -48,5 +47,5 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& bureaucrat) const {
        , -=-~  .-^- _\n\
 ejm97         `";
 		tree_count--;
-	} while(tree_count);
+	} while (tree_count > 0);
 }
