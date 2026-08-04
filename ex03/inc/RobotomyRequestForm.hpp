@@ -20,7 +20,8 @@ public:
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	RobotomyRequestForm&	operator=(const RobotomyRequestForm& other) = delete;
 	~RobotomyRequestForm();
-	void	execute(const Bureaucrat& bureaucrat) const;
+	void	execute(const Bureaucrat& bureaucrat) const override;
+	AForm*	newAForm(const std::string& target) const override;
 private:
 	const std::string	_target;
 };

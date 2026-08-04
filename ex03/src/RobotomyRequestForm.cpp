@@ -51,3 +51,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat& bureaucrat) const {
 		+ (fifty_fifty(generate) ? "robotomized successfully" : "robotomy failed")
 		+ '\n';
 }
+
+AForm*	RobotomyRequestForm::newAForm(const std::string& target) const {
+	return (new RobotomyRequestForm(target));
+}

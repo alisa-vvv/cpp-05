@@ -16,18 +16,6 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 
-AForm*	Intern::ShrubberyCreationForm_Factory(const std::string& form_target) {
-	return (new ShrubberyCreationForm(form_target));
-}
-
-AForm*	Intern::RobotomyRequestForm_Factory(const std::string& form_target) {
-	return (new RobotomyRequestForm(form_target));
-}
-
-AForm*	Intern::PresidentialPardonForm_Factory(const std::string& form_target) {
-	return (new PresidentialPardonForm(form_target));
-}
-
 const std::string	Intern::_form_names[FORM_TYPES_COUNT]	{
 	"ShrubberyCreationForm",
 	"RobotomyRequestForm",
@@ -35,6 +23,9 @@ const std::string	Intern::_form_names[FORM_TYPES_COUNT]	{
 };
 
 const AForm::AForm_method_ptr	Intern::_constr_ptrs[FORM_TYPES_COUNT] {
+	(AForm::AForm_method_ptr) &ShrubberyCreationForm::newAForm,
+	(AForm::AForm_method_ptr) &RobotomyRequestForm::newAForm,
+	(AForm::AForm_method_ptr) &PresidentialPardonForm::newAForm,
 };
 
 /*	Canonical form stuff	*/

@@ -20,7 +20,8 @@ public:
 	PresidentialPardonForm(const PresidentialPardonForm& other);
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm& other) = delete;
 	~PresidentialPardonForm();
-	void	execute(const Bureaucrat& bureaucrat) const;
+	void	execute(const Bureaucrat& bureaucrat) const override;
+	AForm*	newAForm(const std::string& target) const override;
 private:
 	const std::string	_target;
 };

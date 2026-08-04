@@ -49,3 +49,7 @@ ejm97         `";
 		tree_count--;
 	} while (tree_count > 0);
 }
+
+AForm*	ShrubberyCreationForm::newAForm(const std::string& target) const {
+	return (new ShrubberyCreationForm(target));
+}

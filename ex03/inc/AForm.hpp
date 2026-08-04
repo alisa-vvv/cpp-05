@@ -44,13 +44,16 @@ public:
 	void			beSigned(const Bureaucrat& bureaucrat);
 	virtual void	execute(const Bureaucrat& bureaucrat) const = 0;
 
-	typedef AForm*(*AForm_method_ptr)();
+	/*	For Factory	*/
+	typedef AForm*	(AForm::*AForm_method_ptr)(const std::string& target) const;
+	virtual AForm*	newAForm(const std::string& target) const = 0;
+	/**/
 
 protected:
 	static const FormException	GradeTooHighException;
 	static const FormException	GradeTooLowException;
 	static const FormException	FormNotSignedException;
-	void			confirmCanExecute(const Bureaucrat& bureaucrat) const;
+	void	confirmCanExecute(const Bureaucrat& bureaucrat) const;
 
 private:
 	const std::string	_name;

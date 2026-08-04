@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 #include <string>
 
 #define FORM_TYPES_COUNT 3
@@ -32,10 +29,6 @@ public:
 		const std::string& form_target
 	);
 private:
-	AForm*	ShrubberyCreationForm_Factory(const std::string& form_target);
-	AForm*	RobotomyRequestForm_Factory(const std::string& form_target);
-	AForm*	PresidentialPardonForm_Factory(const std::string& form_target);
-
 	static const std::string				_form_names[FORM_TYPES_COUNT];
-	static const &((AForm*)(const std::string&))	_constr_ptrs[FORM_TYPES_COUNT];
+	static const AForm::AForm_method_ptr	_constr_ptrs[FORM_TYPES_COUNT];
 };
