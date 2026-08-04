@@ -53,7 +53,7 @@ CPPFLAGS	= $(INCFLAGS) -MMD -MP
 
 INCFLAGS	= $(addprefix -I,$(INCLUDE))
 #CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=undefined
+CFLAGS	= -std=c++20 -Wall -Wextra -Werror -fsanitize=undefined
 LDFLAGS	=
 INPUT	=
 

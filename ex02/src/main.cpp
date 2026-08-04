@@ -23,19 +23,19 @@ int	main() {
 	alina.executeForm(home);
 	jared.signForm(home);
 	alina.signForm(home);
+	std::cout << home;
 	jared.executeForm(home);
 	alina.executeForm(home);
-	std::cout << home;
 	std::cout << '\n';
 
 	std::cout << CLR_YEL << "ROBOTOMY EXAMPLE:" << CLR_NON << '\n';
-	RobotomyRequestForm		this_joke_is_too_dark("Unwilling participant");
-	std::cout << this_joke_is_too_dark;
-	jared.signForm(this_joke_is_too_dark);
-	alina.signForm(this_joke_is_too_dark);
-	jared.executeForm(this_joke_is_too_dark);
-	alina.executeForm(this_joke_is_too_dark);
-	std::cout << this_joke_is_too_dark;
+	RobotomyRequestForm		victim("Unwilling participant");
+	std::cout << victim;
+	jared.signForm(victim);
+	alina.signForm(victim);
+	std::cout << victim;
+	jared.executeForm(victim);
+	alina.executeForm(victim);
 	std::cout << '\n';
 
 	std::cout << CLR_YEL << "PRESIDENTIAL PARDON EXAMPLE:" << CLR_NON << '\n';
