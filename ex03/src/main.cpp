@@ -7,7 +7,20 @@ int	main() {
 	Bureaucrat	jared("Jared", 150);
 	Bureaucrat	alina("Alina", 1);
 
+	// copy/assign test
+//	Bureaucrat	copy(alina);
+//	Bureaucrat	copy_assign("new_name", 50);
+//	copy_assign = jared;
+//	std::cout << copy;
+//	std::cout << copy_assign;
+//	std::cout << '\n';
+
 	Intern		unpayed;
+
+	std::cout << CLR_YEL << "FAKE FORM NAME EXAMPLE" << CLR_NON << '\n';
+	AForm*	fake_norm = unpayed.makeForm("fake_form_name", "fake_norm");
+	std::cout << fake_norm;
+	std::cout << '\n';
 
 	std::cout << CLR_YEL << "SHRUBBERY EXAMPLE:" << CLR_NON << '\n';
 	AForm*	home = unpayed.makeForm("ShrubberyCreationForm", "home");

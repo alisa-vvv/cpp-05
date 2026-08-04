@@ -21,7 +21,7 @@ public:
 	RobotomyRequestForm&	operator=(const RobotomyRequestForm& other) = delete;
 	~RobotomyRequestForm();
 	void	execute(const Bureaucrat& bureaucrat) const override;
-	AForm*	newAForm(const std::string& target) const override;
+	static AForm*	newRobotomyForm(const std::string& target);
 private:
 	const std::string	_target;
 };

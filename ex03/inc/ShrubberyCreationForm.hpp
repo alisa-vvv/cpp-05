@@ -21,7 +21,7 @@ public:
 	ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& other) = delete;
 	~ShrubberyCreationForm();
 	void	execute(const Bureaucrat& bureaucrat) const override;
-	AForm*	newAForm(const std::string& target) const override;
+	static AForm*	newShrubberyForm(const std::string& target);
 private:
 	const std::string	_target;
 };

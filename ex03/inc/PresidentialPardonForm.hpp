@@ -21,7 +21,7 @@ public:
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm& other) = delete;
 	~PresidentialPardonForm();
 	void	execute(const Bureaucrat& bureaucrat) const override;
-	AForm*	newAForm(const std::string& target) const override;
+	static AForm*	newPresidentialPardonForm(const std::string& target);
 private:
 	const std::string	_target;
 };

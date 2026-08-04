@@ -33,6 +33,6 @@ void	PresidentialPardonForm::execute(const Bureaucrat& bureaucrat) const {
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox\n";
 }
 
-AForm*	PresidentialPardonForm::newAForm(const std::string& target) const {
+AForm*	PresidentialPardonForm::newPresidentialPardonForm(const std::string& target) {
 	return (new PresidentialPardonForm(target));
 }

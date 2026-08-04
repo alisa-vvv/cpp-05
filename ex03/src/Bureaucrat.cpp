@@ -38,14 +38,15 @@ Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
 	_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) 
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+	:	_name(other._name)
 {
-	*this = other;
+	this->_grade = other._grade;
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other) {
-		*this = other;
+		this->_grade = other._grade;
 	}
 	return (*this);
 }
@@ -72,7 +73,7 @@ void	Bureaucrat::incrementGrade() {
 }
 void	Bureaucrat::decrementGrade() {
 	if (_grade == _lowest_grade) {
-		throw(GradeTooHighException);
+		throw(GradeTooLowException);
 	}
 	_grade++;
 }

@@ -50,6 +50,6 @@ ejm97         `";
 	} while (tree_count > 0);
 }
 
-AForm*	ShrubberyCreationForm::newAForm(const std::string& target) const {
+AForm*	ShrubberyCreationForm::newShrubberyForm(const std::string& target) {
 	return (new ShrubberyCreationForm(target));
 }

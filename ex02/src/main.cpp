@@ -9,6 +9,14 @@ int	main() {
 	Bureaucrat	jared("Jared", 150);
 	Bureaucrat	alina("Alina", 1);
 
+	// copy test
+//	Bureaucrat	copy(alina);
+//	Bureaucrat	copy_assign("new_name", 50);
+//	copy_assign = jared;
+//	std::cout << copy;
+//	std::cout << copy_assign;
+//	std::cout << '\n';
+
 	std::cout << CLR_YEL << "SHRUBBERY EXAMPLE:" << CLR_NON << '\n';
 	ShrubberyCreationForm	home("home");
 	std::cout << home;

@@ -5,6 +5,15 @@
 int	main() {
 	Bureaucrat	jared("Jared", 149);
 	Bureaucrat	alina("Alina", 2);
+	
+	// copy test
+//	Bureaucrat	copy(alina);
+//	Bureaucrat	copy_assign("new_name", 50);
+//	copy_assign = jared;
+//	std::cout << copy;
+//	std::cout << copy_assign;
+//	std::cout << '\n';
+
 	Form		form("easy_form", 123, 123);
 
 	try {

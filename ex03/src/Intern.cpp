@@ -22,53 +22,40 @@ const std::string	Intern::_form_names[FORM_TYPES_COUNT]	{
 	"PresidentialPardonForm",
 };
 
-const AForm::AForm_method_ptr	Intern::_constr_ptrs[FORM_TYPES_COUNT] {
-	(AForm::AForm_method_ptr) &ShrubberyCreationForm::newAForm,
-	(AForm::AForm_method_ptr) &RobotomyRequestForm::newAForm,
-	(AForm::AForm_method_ptr) &PresidentialPardonForm::newAForm,
+const AForm::newFormPtr	Intern::_new_form_ptrs[FORM_TYPES_COUNT] {
+	&ShrubberyCreationForm::newShrubberyForm,
+	&RobotomyRequestForm::newRobotomyForm,
+	&PresidentialPardonForm::newPresidentialPardonForm,
 };
 
 /*	Canonical form stuff	*/
 Intern::Intern() {
 }
 
-Intern::Intern(const Intern& other) {
-	*this = other;
-}
-
-Intern&	Intern::operator=(const Intern& other) {
-	if (this != &other)
-		*this = other;
-	return (*this);
-}
-
 Intern::~Intern() {
 }
 /**/
-
-static AForm*	createNewForm(
-	const std::string& form_name,
-	const std::string& form_target
-) {
-	if (form_name == "ShrubberyCreationForm")
-		return (new ShrubberyCreationForm(form_target));
-	if (form_name == "RobotomyRequestForm")
-		return (new RobotomyRequestForm(form_target));
-	if (form_name == "PresidentialPardonForm")
-		return (new PresidentialPardonForm(form_target));
-	return (nullptr);
-}
 
 AForm*	Intern::makeForm(
 	const std::string& form_name,
 	const std::string& form_target
 ) {
-	AForm*	new_form = createNewForm(form_name, form_target);
-	if (new_form == nullptr) {
-		std::cout << CLR_RED << "Intern could not create form " << form_name
-			<< " - form name does not exist" << CLR_NON << '\n';
+	for (int i = 0; i < FORM_TYPES_COUNT; i++) {
+		if (_form_names[i] == form_name) {
+			AForm*	new_form;
+			try {
+				new_form = _new_form_ptrs[i](form_target);
+			}
+			catch (const std::exception &e) {
+				std::cout << CLR_RED << "Intern could not create form " << form_name
+					<< " because " << e.what();
+				return (nullptr);
+			}
+			std::cout << "Intern creates " << form_name << '\n';
+			return (new_form);
+		}
 	}
-	else
-		std::cout << "Intern creates " << form_name << '\n';
-	return (new_form);
+	std::cout << CLR_RED << "Intern could not create form " << form_name
+		<< " - form name does not exist" << CLR_NON << '\n';
+	return (nullptr);
 }

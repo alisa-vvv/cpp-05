@@ -52,6 +52,6 @@ void	RobotomyRequestForm::execute(const Bureaucrat& bureaucrat) const {
 		+ '\n';
 }
 
-AForm*	RobotomyRequestForm::newAForm(const std::string& target) const {
+AForm*	RobotomyRequestForm::newRobotomyForm(const std::string& target) {
 	return (new RobotomyRequestForm(target));
 }

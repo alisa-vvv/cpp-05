@@ -19,16 +19,15 @@ class Intern {
 public:
 /*	Canonical form stuff	*/
 	Intern();
-	Intern(const Intern& other);
-	Intern&	operator=(const Intern& other);
+	Intern(const Intern& other) = delete;
+	Intern&	operator=(const Intern& other) = delete;
 	~Intern();
 /**/
-
 	AForm*	makeForm(
 		const std::string& form_name,
 		const std::string& form_target
 	);
 private:
-	static const std::string				_form_names[FORM_TYPES_COUNT];
-	static const AForm::AForm_method_ptr	_constr_ptrs[FORM_TYPES_COUNT];
+	static const std::string		_form_names[FORM_TYPES_COUNT];
+	static const AForm::newFormPtr	_new_form_ptrs[FORM_TYPES_COUNT];
 };

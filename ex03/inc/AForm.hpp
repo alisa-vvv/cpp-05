@@ -45,8 +45,7 @@ public:
 	virtual void	execute(const Bureaucrat& bureaucrat) const = 0;
 
 	/*	For Factory	*/
-	typedef AForm*	(AForm::*AForm_method_ptr)(const std::string& target) const;
-	virtual AForm*	newAForm(const std::string& target) const = 0;
+	typedef AForm*	(*newFormPtr)(const std::string& target);
 	/**/
 
 protected:
